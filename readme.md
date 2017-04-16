@@ -22,7 +22,7 @@
 コピーしてご利用ください。  
 
 # 拡張方法
-[source/index.htmlの49行以降のformatsオブジェクト](https://github.com/kazenetu/blog-reports/blob/master/reports/09-JS-SourceGenerator/source/index.html#L42-L56)を下記のように拡張します。    
+[source/index.htmlの43行以降のformatsオブジェクト]https://github.com/kazenetu/SourceGenerator/blob/master/index.html#L43-L55)を下記のように拡張します。    
 ``` javascript
 formats.ドロップダウン名 = new Object();
 // 設定値の説明
@@ -34,6 +34,13 @@ formats.ドロップダウン名.format = '/// <summary>'+'\n'+
             '/// {0}'+'\n'+
             '/// </summary>'+'\n'+
             'public {1} {2} {set; get; }'+'\n';
+// '0000'などを入力するとゼロ入り番号を設定できます(参考：java_property.formatArgs)
+// {インデックス} と同じ順番で定義します
+formats.ドロップダウン名.formatArgs = [
+  null,
+  null,
+  null
+];
 ```
 
 # おわりに
