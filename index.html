@@ -40,6 +40,7 @@
     <script>
     window.onload = function () {
       var formats=new Object();
+      // C#用プロパティ
       formats.cs_property = new Object();
       formats.cs_property.text = "論理プロパティ名 データ型 物理プロパティ名";
       formats.cs_property.count = 3;
@@ -47,6 +48,13 @@
                   '/// {0}'+'\n'+
                   '/// </summary>'+'\n'+
                   'public {1} {2} {set; get; }'+'\n';
+      formats.cs_property.formatArgs = [
+        null,
+        null,
+        null
+      ];
+
+      // VB.NET用プロパティ
       formats.vb_property = new Object();
       formats.vb_property.text = "論理プロパティ名 データ型 物理プロパティ名";
       formats.vb_property.count = 3;
@@ -54,6 +62,25 @@
                   "''' {0}" + "\n"+
                   "''' </summary>" + "\n"+
                   "Public Property {2} As {1}" + "\n";
+      formats.vb_property.formatArgs = [
+        null,
+        null,
+        null
+      ];
+
+      // Java用プロパティ
+      formats.java_property = new Object();
+      formats.java_property.text = "種類 番号 内容 設定例：E	10	登録できませんでした";
+      formats.java_property.count = 3;
+      formats.java_property.format = '/**'+'\n'+
+                  ' * {2}'+'\n'+
+                  ' */'+'\n'+
+                  'public static String {0}{1} = "{2}";'+'\n';
+      formats.java_property.formatArgs = [
+        null,
+        '0000',
+        null
+      ];
 
       // SELECTの選択値を設定
       var formatType = document.getElementById('formatType');
@@ -87,7 +114,10 @@
             var formattedText = target.format;
 
             for (var index = 0; index < temp.length; index++) {
-              formattedText = formattedText.replace("{"+index.toString()+"}",temp[index]);
+              var replaceTarget = "{"+index.toString()+"}";
+              while(formattedText.indexOf(replaceTarget) >= 0) {
+                formattedText = formattedText.replace(replaceTarget, formatArg(temp[index], target.formatArgs[index]));
+              }
             }
             if(temp.length == target.count){
               desc.push(formattedText + "\n");
@@ -97,6 +127,12 @@
         after.value = desc.join("");
       };
     };
+    function formatArg(src, argFormat) {
+      if(!argFormat){
+        return src;
+      }
+      return (argFormat + src).substr(-argFormat.legth);
+    }
     </script>
 </body>
 </html>
