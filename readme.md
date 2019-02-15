@@ -8,21 +8,22 @@
 
 
 # 利用方法
-1. ソースコードを[https://github.com/kazenetu/blog-reports/blob/master/reports/09-JS-SourceGenerator/source/index.html](https://github.com/kazenetu/blog-reports/blob/master/reports/09-JS-SourceGenerator/source/index.html)をダウンロードしてください。
+1. [https://github.com/kazenetu/blog-reports/blob/master/reports/09-JS-SourceGenerator/source/index.html](https://github.com/kazenetu/blog-reports/blob/master/reports/09-JS-SourceGenerator/source/index.html)をダウンロードしてください。
 
 1. ダウンロードしたファイルをブラウザで開いてください。
-![表示結果](./screen.png)
+![初期表示](./screen.png)
 
 1. 画面上部のテキストエリアにタブで区切った文字列をペーストしてください。  
 ※ヒントは上の「設定値：」以下を参考にして下ください。
 
 1. 画面中央のドロップダウンを選択し、「変換」ボタンをクリックしてください。
 
-1. 画面下部のテキストエリアに変換結果が出力されます。  
+1. 画面下部の生成結果テキストエリアに変換結果が出力されます。  
 コピーしてご利用ください。  
+![変換結果](./after.png)
 
 # 拡張方法
-[source/index.htmlの43行以降のformatsオブジェクト]https://github.com/kazenetu/SourceGenerator/blob/master/index.html#L43-L55)を下記のように拡張します。    
+[source/index.htmlの43行以降のformatsオブジェクト](https://github.com/kazenetu/SourceGenerator/blob/master/index.html#L43-L55)を下記のように拡張します。    
 ``` javascript
 formats.ドロップダウン名 = new Object();
 // 設定値の説明
